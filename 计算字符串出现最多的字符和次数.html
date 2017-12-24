@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>计算字符串出现最多的字符和次数</title>
+</head>
+<body>
+<script type="text/javascript">
+	/**
+	 * 计算字符串出现最多的字符和次数
+	 * @type {String}
+	 */
+	var str = 'qwertyuilo.,mnbvcsarrrrrrrrtyuiop;l,mhgfdqrtyuio;.cvxsrtyiuo99999999999';
+
+	function check(str) {
+		if(typeof str !== 'string') return;
+
+		var length = str.length,
+			maxStr = str[0],
+			obj = {},
+			arrStr = [str[0]];
+
+		for(var i = 0; i<length; i++) {
+			var subStr = str[i];
+			if(obj.hasOwnProperty(subStr)) {
+				obj[subStr]++;
+				if(obj[subStr] > obj[maxStr]) {
+					maxStr = subStr;
+					arrStr = [];
+					arrStr.push(subStr);
+				}else if(obj[subStr] === obj[maxStr] && subStr!== maxStr) {
+					arrStr.push(subStr);
+				}
+			}else {
+				obj[subStr] = 1;
+			}
+		}
+
+		console.log('maxStr' + maxStr);
+		console.log(obj);
+		console.log(arrStr);
+		console.log('出现的最多的字符是：' + arrStr.toString() + ' 次数为：' + obj[maxStr]);
+	}
+
+	check(str);
+</script>
+</body>
+</html>
