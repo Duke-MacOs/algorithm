@@ -44,7 +44,55 @@
 			 * 数，移动右指针，找到一个比主元小的数，交换他们，直到左指针超过右指针，使比主元小的
 			 * 在左，大的在右，这叫划分操作
 			 * 3.划分后的数组（一个较主元小的，一个较主元大的）重复前面的操作
+			 *
+			 * 
+			 * 
+			 * @param  {arr} arr   [description]
+			 * @param  {[type]} left  [左指针]
+			 * @param  {[type]} right [右指针]
+			 * @return {[arr]}       [description]
 			 */
+			function quickSort2(arr, left, right) {
+				function partition(arr, left, right) {
+					var privot = arr[Math.floor((left + right)/2)],
+						i = left,
+					 	j = right;
+
+					while (i <= j) {
+						while (arr[i] < privot) {
+							i++;
+						}
+						while(arr[j] > privot) {
+							j--;
+						}
+						if (i <= j) {
+							(function (arr, index1, index2) {
+								var aux = arr[i];
+								arr[i] = arr[j];
+								arr[j] = aux;
+							})(arr, i, j);
+							i++;
+							j--;
+						}
+					}
+					return i;
+				}
+
+				var index;
+
+				if (arr.length > 1) {
+					index = partition(arr, left, right);
+
+					if (left < index - 1) {
+						quickSort2(arr, left, index - 1);
+					}
+
+					if (index <  right) {
+						quickSort2(arr, index, right);
+					}
+				}
+				
+			}
 		</script>
 	</body>
 </html>
