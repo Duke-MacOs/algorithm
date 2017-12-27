@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>快速排序</title>
+	</head>
+	<body>
+		<script>
+			
+			/**
+			 * 快速排序1思想：
+			 * 1.取数组中间值为主元
+			 * 2.将小于主元的值放在leftArr空数组，大于主元值放在rightArr空数组。
+			 * 返回值为leftArr.concat(minValue, rightArr);
+			 * 3.重复递归上面的两步操作
+			 * @param  {[type]} arr [description]
+			 * @return {[type]}     [description]
+			 */
+			function quickSort(arr) {
+				if(!Array.isArray(arr)) return [];
+				if(arr.length <= 1) return arr;
+
+				// 向下取整
+				var midIndex = Math.floor(arr.length/2),
+					minValue = arr.splice(midIndex, 1),
+					leftArr = [],
+					rightArr = []; 
+
+				for(var i = 0; i<arr.length; i++) {
+					if(arr[i] < minValue) {
+						leftArr.push(arr[i]);
+					}else {
+						rightArr.push(arr[i]);
+					}
+				}
+
+				return quickSort(leftArr).concat(minValue, quickSort(rightArr));
+
+			}
+
+			/**
+			 * 快速排序2思想：
+			 * 1.选择数组中间一项为主元
+			 * 2.创建两个指针，一个指向第一项，一个指向最后一项，移动左指针，找到一个比主元大的
+			 * 数，移动右指针，找到一个比主元小的数，交换他们，直到左指针超过右指针，使比主元小的
+			 * 在左，大的在右，这叫划分操作
+			 * 3.划分后的数组（一个较主元小的，一个较主元大的）重复前面的操作
+			 */
+		</script>
+	</body>
+</html>

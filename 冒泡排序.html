@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>冒泡排序</title>
+	</head>
+	<body>
+
+		<script>
+			/**
+			 * 冒泡排序思想：
+			 * 1.从第一个元素开始，和右边的元素相比，如果比第二个元素大，则交换他们的位置，然后
+			 * 第二个元素在和第三个元素相比，依次循环，知道比完最后一个元素，此时最大的元素在数组
+			 * 最后一位。
+			 * 2.重复第一个操作，找到第二大的元素，放到倒数第二个位置
+			 * @param  {[type]} arr [description]
+			 * @return {[type]}     [description]
+			 */
+			function bubbleSort(arr) {
+				if(!Array.isArray(arr)) return [];
+				if(arr.length <= 1) return arr;
+
+				for(var i = 1; i<arr.length; i++) {
+					for(var j = 0; j<=arr.length-i; j++) {
+						var temp = 0;
+
+						if(arr[j] > arr[j+1]) {
+							temp = arr[j];
+							arr[j] = arr[j+1];
+							arr[j+1] = temp;
+						}
+
+						console.log(arr);
+					}
+				}
+				return arr;
+			}
+		</script>
+
+	</body>
+</html>
