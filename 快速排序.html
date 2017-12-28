@@ -91,8 +91,90 @@
 						quickSort2(arr, index, right);
 					}
 				}
-				
 			}
+
+
+
+
+			function quickSort3 (arr, left, right) {
+				function partition(arr, left, right) {
+
+					// 确定主元值
+					var midValue = arr[Math.floor((left + right) / 2)];
+					var i = left, j = right;
+
+					// 只要左指针和右指针没有交叉
+					while (i <= j) {
+						while (arr[i] < midValue) {
+							i++;
+						}
+
+						while (arr[j] > midValue) {
+							j--;
+						}
+
+						if (i <= j) {
+							(function (arr, index, index2) {
+								var aux = arr[index];
+								arr[index] = arr[index2];
+								arr[index2] = aux;
+							})(arr, i, j);
+							i++;
+							j--;
+						}
+					}
+
+					return i;
+				}
+
+				var index;
+
+				if (arr.length > 1) {
+					index = partition(arr, left, right);
+
+					if (left < index - 1) {
+						quickSort3(arr, left, index - 1);
+					}
+
+					if (index < right) {
+						quickSort3(arr, index, right);
+					}
+				}
+			}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 		</script>
 	</body>
 </html>
