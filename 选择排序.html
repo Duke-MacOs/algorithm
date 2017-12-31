@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>选择排序</title>
+	</head>
+
+	<script>
+		/**
+		 * 选择排序思路：
+		 * 两层循环，复杂度为O(n²)；
+		 * 1.找到数组中最小的那个数，放到第一位；
+		 * 2.找到数组中第二小的数，放到第二位；
+		 * 3.依次循环
+		 * @param  {Array} arr 排序数组
+		 * @return {Array}     [description]
+		 */
+		function selectionSort(arr) {
+			if (arr.length > 1) {
+				var length = arr.length,
+					minIndex;
+				for(var i = 0; i < length - 1; i++) {
+					minIndex = i;
+					for(var j = i; j < length; j++) {
+						if (arr[minIndex] > arr[j]) {
+							minIndex = j;
+						}
+					}
+					if ( i !== minIndex) {
+						(function (index1, index2) {
+							var aux = arr[index1];
+							arr[index1] = arr[index2];
+							arr[index2] = aux;
+						})(i, minIndex);
+					}
+				}
+			}
+		}
+	</script>
+
+</html>
