@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>插入排序</title>
+	</head>
+	<body>
+		<script>
+			/**
+			 * 插入排序： 
+			 * 1.默认第一项已经排序；
+			 * 2.当前项和前面的所有项比较，前面的所有项都已经排序了
+			 * 3.当前项小于对比项时，将对比项后移，继续与前一个项对比
+			 * 4.当当前项找到比它小的一项时候，则插入到该项后面；
+			 *
+			 * 排序小型数组时，该方法比冒泡、选择排序性能好
+			 * @param  {[type]} arr [description]
+			 * @return {[type]}     [description]
+			 */
+			function insertionSort(array) {
+				let arr = [...array];
+				if (arr.length > 1) {
+					var length = arr.length,
+						j,
+						temp;
+
+					for (var i = 1; i<length; i++) {
+						j = i;
+						temp = arr[i];
+						while (j > 0 && arr[j-1] > temp) {
+							arr[j] = arr[j-1]
+							j--;
+						}
+						arr[j] = temp;
+					}
+				}
+				return arr;
+			}
+		</script>
+	</body>
+</html>

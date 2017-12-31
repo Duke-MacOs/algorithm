@@ -15,7 +15,8 @@
 			 * @param  {[type]} arr [description]
 			 * @return {[type]}     [description]
 			 */
-			function quickSort(arr) {
+			function quickSort(array) {
+				let arr = [...array];
 				if(!Array.isArray(arr)) return [];
 				if(arr.length <= 1) return arr;
 
@@ -58,6 +59,7 @@
 						i = left,
 					 	j = right;
 
+					// 两个指针交叉后，左指针左边都是 <= 主元， 右指针都是  >= 主元， 返回左指针， 以左指针为界， 重新排序左指针两边数组
 					while (i <= j) {
 						while (arr[i] < privot) {
 							i++;
@@ -65,6 +67,7 @@
 						while(arr[j] > privot) {
 							j--;
 						}
+						// 左右指针还没交叉，交换两个元素位置
 						if (i <= j) {
 							(function (arr, index1, index2) {
 								var aux = arr[i];
