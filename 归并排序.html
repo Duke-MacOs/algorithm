@@ -1,0 +1,43 @@
+<!DOCTYPE html> 
+<html>
+    <head>
+        <title>归并排序</title>
+    </head>
+    <body>
+        <script>
+            /**
+             * 归并算法：
+             * 1.将数组一直拆分，分为左右两个数组，直到剩下一个元素
+             * 2.然后开始分左右两边比较合并
+             * 性能上大于：冒泡=选择=插入
+             * 火狐使用此算法，实现Array.sort方法
+             * @param  {[type]} arr [description]
+             * @return {[type]}     [description]
+             */
+            function mergeSort (arr) {
+                var length = arr.length,
+                    minIndex = Math.floor(length / 2),
+                    leftArr = arr.slice(0, minIndex),
+                    rightArr = arr.slice(minIndex, length);
+
+                if (length === 1) return arr;
+
+                return merge(mergeSort(leftArr), mergeSort(rightArr));
+            }
+
+            function merge (leftArr, rightArr) {
+                var result = [];
+
+                while (leftArr.length > 0 && rightArr.length > 0) {
+                    if (leftArr[0] < rightArr[0]) {
+                        result.push(leftArr.shift());
+                    }else {
+                        result.push(rightArr.shift());
+                    }
+                }
+
+                return result.concat(leftArr).concat(rightArr);
+            }
+        </script>
+    </body>
+</html>
