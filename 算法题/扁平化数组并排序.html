@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>扁平化数组并排序</title>
+    </head>
+    <body>
+        <script>
+            /**
+             * 
+             * @type {Array}
+             */
+            var arr = [[1,2,2],[3, 4, 5, 5],[6, 7, 8, 9,[11,12,[12,13,[14]]]],10];  
+            var newArray = [];
+            
+            function getArray(arr) {
+                if (Array.isArray(arr)) {
+                    arr.forEach (function (e) {
+                        if (typeof e === 'object') {
+                            getArray(e)
+                        }else {
+                            newArray.push(e)
+                        }
+                    })
+                }
+            }
+            getArray(arr);
+
+            // 去重
+            Array.prototype.distinct = function () {
+                return this.reduce(function (newArray1, newValue) {
+                    if(newArray1.indexOf(newValue) === -1)
+                        newArray1.push(newValue);
+                    return newArray1;
+                }, [])
+            }
+            newArray = newArray.distinct();
+
+            // 排序
+            newArray.sort(function (a, b) {
+                return a - b;
+            });
+            console.log(newArray)
+        </script>
+    </body>
+</html>
