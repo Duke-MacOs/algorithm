@@ -34,6 +34,23 @@
 				}
 				return arr;
 			}
+
+            // 重复练习
+            function bubbleSort2(arr) {
+                if (arr.length <= 1) return;
+                var length = arr.length,
+                    temp;
+
+                for(let i = 0; i<length; i++) {
+                    for(let j = 0; j<=length-i; j++) {
+                        if (arr[j] > arr[j+1]) {
+                            temp = arr[j+1];
+                            arr[j+1] = arr[j];
+                            arr[j] = temp;
+                        }
+                    }
+                }
+            }
 		</script>
 
 	</body>

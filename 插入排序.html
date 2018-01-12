@@ -35,6 +35,27 @@
 				}
 				return arr;
 			}
+
+			// 重复练习
+			function insertionSort2(arr) {
+				if (arr.length <= 1 || !Array.isArray(arr)) return;
+				var length = arr.length,
+					j,
+					temp;
+
+
+				for(let i = 1; i<length; i++) {
+					j = i;
+					temp = arr[i];
+
+					while (temp < arr[j-1]) {
+						arr[j] = arr[j-1];
+						j--;
+					}
+					arr[j] = temp;
+				}
+				
+			}	
 		</script>
 	</body>
 </html>

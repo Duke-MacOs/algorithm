@@ -35,6 +35,30 @@
 				}
 			}
 		}
+
+		// 重复练习
+		function selectionSort2(arr) {
+			if (arr.length <=1) return;
+
+			var length = arr.length,
+				temp,
+				minIndex;
+
+			for (let i = 0; i<length; i++) {
+				minIndex = i;
+				for (let j = i; j<length; j++) {
+					if (arr[j] < arr[minIndex]) {
+						minIndex = j;
+					}
+				}
+
+				if (minIndex !== i) {
+					temp = arr[i];
+					arr[i] = arr[minIndex];
+					arr[minIndex] = temp;
+				}
+			}
+		}
 	</script>
 
 </html>
