@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>深度复制对象</title>
+    </head>
+    <body>
+        <script>
+            function deepCopyObject(sourceObj) {
+                if (typeof sourceObj !== 'object') return sourceObj;
+
+                if (sourceObj instanceof Date) return new Date(sourceObj.valueOf());
+
+                if (sourceObj instanceof Array) {
+                    let arr = [];
+                    sourceObj.forEach(value => arr.push(deepCopyObject(value)));
+
+                    return arr;
+                }
+
+                if (sourceObj instanceof Object) {
+                    console.log('object')
+                    let myObject = {};
+                     for(let key in sourceObj) {
+                        myObject.key = deepCopyObject(sourceObj[key])
+                     }
+
+                     return myObject;
+                }
+
+                return sourceObj;
+                
+
+            }
+        </script>
+    </body>
+</html>
+

@@ -35,7 +35,6 @@
 				}
 
 				return quickSort(leftArr).concat(minValue, quickSort(rightArr));
-
 			}
 
 			/**
@@ -96,6 +95,48 @@
 				}
 			}
 
+            // 练习
+            function quickSort21(arr, left, right) {
+                // 
+                function partition(arr, left, right) {
+                    var mid = Math.floor(arr.length / 2),
+                        midValue = arr[mid],
+                        i = left,
+                        j = right;
+
+                    while (i < j) {
+                        while (arr[i] < midValue) {
+                            i++;
+                        }
+                        while (arr[j] > midValue) {
+                            j--;
+                        }
+
+                        if (i <= j) {
+                            var temp = arr[j];
+                            arr[j] = arr[i];
+                            arr[i] = temp;
+                            i++;
+                            j--;
+                        }
+                    }
+                    return i;
+                }
+
+                var index;
+
+                if (arr.length > 1) {
+                    index = partition(arr, left, right);
+
+                    if (left < index - 1) {
+                        quickSort21(arr, left, index - 1);
+                    }
+
+                    if (right > index) {
+                        quickSort21(arr, index, right);
+                    }
+                }
+            }
 
 
 
