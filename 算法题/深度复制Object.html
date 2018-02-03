@@ -21,7 +21,8 @@
                     console.log('object')
                     let myObject = {};
                      for(let key in sourceObj) {
-                        myObject.key = deepCopyObject(sourceObj[key])
+                        if (sourceObj.hasOwnProperty(key))
+                            myObject.key = deepCopyObject(sourceObj[key])
                      }
 
                      return myObject;
